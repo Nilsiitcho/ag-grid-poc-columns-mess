@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {AppBody, Button, Header, HeaderText, ButtonDiv, ClearButton} from "./styles";
+import {AppBody, Button, Header, HeaderText, ButtonDiv, ClearButton, ButtonSecondary} from "./styles";
 import {getMockedData} from "./dataService";
 import TableAG from "./TableAGGrid/TableAG";
 
@@ -7,14 +7,14 @@ const App = () => {
     const [data, setData] = useState({});
     const [isDataLoading, setLoading] = useState(false);
 
-    async function getData() {
+    async function getData(primary) {
         const options = {
             setData,
-            setLoading
+            setLoading,
+            primary
         }
         await getMockedData(options);
     }
-
 
     return (
         <AppBody>
@@ -23,7 +23,8 @@ const App = () => {
 
                 <ButtonDiv>
                     <ClearButton onClick={() => setData({})} show={!!data.columns}>Limpar</ClearButton>
-                    <Button onClick={getData}>Preencher</Button>
+                    <ButtonSecondary onClick={() => getData(false)}>Preencher</ButtonSecondary>
+                    <Button onClick={() => getData(true)}>Preencher</Button>
                 </ButtonDiv>
             </Header>
 

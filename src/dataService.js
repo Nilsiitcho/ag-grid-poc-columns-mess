@@ -1,7 +1,8 @@
 import mockData from "./mockData";
+import mockData2 from "./mockData2";
 import {buildColumns} from "./columnBuilder/buildColumns";
 
-export async function getMockedData({setData, setLoading}) {
+export async function getMockedData({setData, setLoading, primary}) {
     try {
         setLoading(true);
         const data = await getServerData();
@@ -15,7 +16,7 @@ export async function getMockedData({setData, setLoading}) {
 
     async function getServerData() {
         await sleep(1000);
-        const {data} = mockData;
+        const {data} = primary ? mockData : mockData2;
         const {columns, result} = data;
 
         return {

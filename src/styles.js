@@ -38,6 +38,16 @@ export const Button = styled.button`
   }
 `;
 
+export const ButtonSecondary = styled(Button)`
+  margin-right: 5px;
+  border-color: #5f27cd;
+  background: #5f27cd;
+
+  &:hover {
+    background: #341f97;
+  }
+`
+
 export const ClearButton = styled(Button)`
   display: ${({show}) => show ? 'block' : 'none'};
   margin-right: 5px;
